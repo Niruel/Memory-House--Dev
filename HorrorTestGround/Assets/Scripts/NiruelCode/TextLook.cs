@@ -1,18 +1,19 @@
 ﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class TextLook : MonoBehaviour
 {
-    [SerializeField] TextMesh textMesh;
+    [SerializeField] TextMeshPro textMesh;
     public Transform target;
+    public Transform placeStart;
     // Start is called before the first frame update
     void Start()
     {
-        textMesh.GetComponent<TextMesh>();
-        textMesh.text = "I did not want to do this is \n \n \n but fuck it";
-        Debug.Log(textMesh);
+        textMesh.GetComponent<TextMeshPro>();
+        
+       
     }
 
     // Update is called once per frame
