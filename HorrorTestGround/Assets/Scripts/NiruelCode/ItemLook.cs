@@ -6,20 +6,23 @@ using UnityEngine.UI;
 
 public class ItemLook : MonoBehaviour
 {
-    private int layernum = 1<<8;
+   
     [SerializeField] LayerMask layerMask;
     [SerializeField] private float maxRayDist =0f;
-    [SerializeField] Material highlightMat;
-    [SerializeField] Material DefultMat;
-    [SerializeField] GameObject objDesc;
-
-
-    private Transform _transform;
+    //[SerializeField] Material highlightMat;
+    //[SerializeField] Material DefultMat;
+    [SerializeField] GameObject obj;
+        
+    private int layernum = 1 << 8;
+    public GameObject _transform;
+     public Rigidbody rb;
 
 
     private void Start()
     {
-        objDesc.SetActive(false);
+        // objDesc.SetActive(false);
+       
+        
     }
 
     private void Update()
@@ -39,22 +42,26 @@ public class ItemLook : MonoBehaviour
         {
             Transform selection = hit.transform;
 
-            _transform = selection;
+           _transform.transform.position = selection.position;
+            Transform holder = obj.transform;
             // Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-           // Debug.Log(hit.distance);
-           if (_transform != null)
+            // Debug.Log(hit.distance);
+            if (_transform != null)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    //Debug.Log(_transform);
+                    //objDesc.SetActive(true);
+                    rb.useGravity = false;
+                    _transform.transform.position = Vector3.Lerp(_transform.transform.position, holder.transform.position, 2f);
                     
-                    objDesc.SetActive(true);
-                    Debug.Log("Clicked");
+                   
                   
                   
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
-                    objDesc.SetActive(false);   
+                   // objDesc.SetActive(false);   
                 }
                 // Debug.Log("This is object tranform");
             }
