@@ -15,68 +15,88 @@ public class ItemLook : MonoBehaviour
         
     private int layernum = 1 << 8;
     public GameObject _transform;
-     public Rigidbody rb;
+    public Rigidbody rb;
+    public Rigidbody playerRb;
+    Quaternion quaternion= Quaternion.Euler(0,0,0);
+    public PlayerMover playerMover;
+    public Transform origin;
+    Quaternion currentRot=Quaternion.Euler(-90,0,90);
 
 
     private void Start()
     {
-        // objDesc.SetActive(false);
+        origin.position = _transform.transform.position;
        
-        
+        Debug.Log(currentRot);
     }
 
     private void Update()
     {
-        Highlight();
+        Transform holder = obj.transform;
         
-    }
-  void Highlight()
-    {
-        if (_transform != null)
-        {
-          
-        }
+
         layerMask = layernum;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, maxRayDist, layerMask))
         {
             Transform selection = hit.transform;
 
-           _transform.transform.position = selection.position;
-            Transform holder = obj.transform;
-            // Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            // Debug.Log(hit.distance);
+            _transform.transform.position = selection.position;
+           
+
             if (_transform != null)
             {
+                
+
+                
                 if (Input.GetMouseButtonDown(0))
                 {
-                    //Debug.Log(_transform);
-                    //objDesc.SetActive(true);
-                    rb.useGravity = false;
-                    _transform.transform.position = Vector3.Lerp(_transform.transform.position, holder.transform.position, 2f);
                     
-                   
-                  
-                  
+                    this.transform.localRotation = quaternion;
+                    playerMover.enabled = false;
+                    if (playerMover.enabled == false)
+                    {
+
+                        playerRb.constraints = RigidbodyConstraints.FreezePosition;
+                        
+                        _transform.transform.position = Vector3.Lerp(_transform.transform.position, holder.transform.position, 2f);
+                        rb.useGravity = false;
+                        Debug.Log(origin.position);
+                    }
+
+
+
                 }
-                if (Input.GetMouseButtonUp(0))
-                {
-                   // objDesc.SetActive(false);   
-                }
-                // Debug.Log("This is object tranform");
+                
             }
 
         }
-        else
+        if (playerMover.enabled == false)
         {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            //Debug.Log("Did not Hit");
+            _transform.transform.Rotate(-Input.GetAxis("Mouse Y") * 7, -Input.GetAxis("Mouse X") * 7, 0, Space.Self);
+
         }
-    }
-    void ShowFloatText()
-    {
+
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            _transform.transform.localRotation = currentRot;
+            _transform.transform.position = Vector3.Lerp(holder.transform.position, origin.position, 2f);
+            
+            rb.useGravity = true;
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+            playerMover.enabled = true;
+            playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+            
+
+
+        }
 
     }
+
+
+   
     /*
      * 
      *   Renderer selectionRender = _transform.GetComponentInChildren<Renderer>();
