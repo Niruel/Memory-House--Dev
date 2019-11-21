@@ -21,7 +21,7 @@ public class ItemLook : MonoBehaviour
     public PlayerMover playerMover;
     public Transform origin;
     Quaternion currentRot=Quaternion.Euler(-90,0,90);
-
+    
 
     private void Start()
     {

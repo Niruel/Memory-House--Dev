@@ -43,9 +43,9 @@ public class PlayerMover : MonoBehaviour
        
 
         float xRot = Input.GetAxisRaw("Mouse Y");
-        Vector3 cRot = new Vector3(xRot, 0f, 0f) * look;
-        
-            motor.CRotate(cRot);
+        // Vector3 cRot = new Vector3(xRot, 0f, 0f) * look;
+        float camRot = xRot * look;
+        motor.CRotate(camRot);
         
        
     }

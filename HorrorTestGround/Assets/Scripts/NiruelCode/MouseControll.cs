@@ -8,6 +8,7 @@ public class MouseControll : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        
     }
 
    
