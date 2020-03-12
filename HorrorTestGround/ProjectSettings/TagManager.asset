@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Door
+  - InteractableObj
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - 
   - Pickable
-  - 
+  - Viewable
   - 
   - 
   - 

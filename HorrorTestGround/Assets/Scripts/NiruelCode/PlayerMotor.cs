@@ -68,7 +68,6 @@ public class PlayerMotor : MonoBehaviour
             
             currentCamRotX -= cameraRotX;
             currentCamRotX = Mathf.Clamp(currentCamRotX, -cameraMinLim, cameraMaxLimit);
-            Debug.Log(currentCamRotX);
             playerCam.transform.localEulerAngles = new Vector3(currentCamRotX, 0, 0);
         }
     }
