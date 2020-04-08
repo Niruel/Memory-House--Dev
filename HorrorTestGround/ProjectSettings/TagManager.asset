@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Door
   - InteractableObj
+  - Exit
   layers:
   - Default
   - TransparentFX

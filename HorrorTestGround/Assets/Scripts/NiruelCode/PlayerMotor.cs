@@ -17,7 +17,7 @@ public class PlayerMotor : MonoBehaviour
 
     float cameraRotX = 0f,
           currentCamRotX = 0f,
-          cameraMaxLimit=48f,
+          cameraMaxLimit=68f,
           cameraMinLim =90f;
 
     private void Start()

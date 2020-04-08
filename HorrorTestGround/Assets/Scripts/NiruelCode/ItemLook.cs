@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 
 public class ItemLook : MonoBehaviour
@@ -10,11 +10,16 @@ public class ItemLook : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     [SerializeField] private float maxRayDist = 0f;
     [SerializeField] private GameObject userInputKey;
+    [SerializeField] private GameObject siteDot;
+    public List<GameObject> interactables = new List<GameObject>();
+    [SerializeField] Text number;
     //[SerializeField] private TMP_Text userKey;
     private int layernum = 1 << 9;
     public PlayerMover playerMover;
     private ObjectController m_Controller;
+    
     bool doOnce;
+    int itemNumUpdate = 0;
 
 
 
@@ -22,6 +27,7 @@ public class ItemLook : MonoBehaviour
     private void Start()
     {
         userInputKey.SetActive(false);
+        siteDot.SetActive(true);
     }
 
     private void Update()
@@ -46,9 +52,19 @@ public class ItemLook : MonoBehaviour
                 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
+                    
+                   
+                    if (!interactables.Contains(m_Controller.m_InGame_Model))
+                    {
+                        Debug.Log(hit.collider.name);
+                        interactables.Add(m_Controller.m_InGame_Model);
+                        itemNumUpdate++;
+                        number.text = itemNumUpdate.ToString();
+                    }
                     userInputKey.SetActive(false);
                     playerMover.enabled = false;
-                    m_Controller.ShowObject();   
+                    siteDot.SetActive(false);
+                    m_Controller.ShowObject();
                     
                 }
             }  
@@ -66,6 +82,7 @@ public class ItemLook : MonoBehaviour
         {
             m_Controller.HideObject();
             playerMover.enabled = true;
+            siteDot.SetActive(true);
         }
         if (playerMover.enabled == false)
         {

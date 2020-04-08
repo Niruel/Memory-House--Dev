@@ -5,19 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameStart.unity
     guid: 127eee4c6f4ef4bfca4043b1f83c2e55
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FPSCamera_Garden.unity
     guid: a49fb20ec896541e6846f3ab5306eaad
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FPSCamera_Level1.unity
     guid: f4f56a4c822694ea8a0a07da935ec208
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FPSCamera_Level2.unity
     guid: 8d8eac44693c5445c82eaaae249e243c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FPSCamera_Level1_Bug.unity
     guid: bb9e86cdec5084debbbbb107f7a91e64
+  - enabled: 1
+    path: Assets/Scenes/level001.unity
+    guid: 63876ccb4fc9d894f8fa910a175735c6
+  - enabled: 0
+    path: Assets/Scenes/DoorScence.unity
+    guid: 8b17f00ef60284043929e45e95878747
+  - enabled: 1
+    path: Assets/Scenes/TempGameOver.unity
+    guid: 378e13bcd8ed3934392cd040b84334fe
   m_configObjects: {}

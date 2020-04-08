@@ -6,10 +6,12 @@ public class ObjectController : MonoBehaviour
 {
     [SerializeField] private float m_RotateSpeed =7f;
     public GameObject m_Inscpect_Model;
-    [SerializeField] private GameObject m_InGame_Model;
+    public GameObject m_InGame_Model;
     [SerializeField] private string object_Name_Text;
     [TextArea] [SerializeField] private string Object_discription_text;
     [SerializeField] private InspectController inspectController;
+    
+   
 
 
     private void Start()
@@ -34,8 +36,12 @@ public class ObjectController : MonoBehaviour
        
         m_InGame_Model.SetActive(true);
     }
+  
     public void RotateObj()
     {
-        m_Inscpect_Model.transform.Rotate(-Input.GetAxis("Mouse Y") * m_RotateSpeed, -Input.GetAxis("Mouse X") * m_RotateSpeed, 0, Space.Self);
+        float mouseX = Input.GetAxis("Mouse X")*m_RotateSpeed;
+        float mouseY = Input.GetAxis("Mouse Y")*m_RotateSpeed;
+        m_Inscpect_Model.transform.Rotate(-transform.up,mouseX);
+        m_Inscpect_Model.transform.Rotate(transform.right, mouseY);
     }
 }

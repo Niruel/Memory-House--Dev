@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InspectController : MonoBehaviour
-{
-    
-    
+{  
    
     [SerializeField] private GameObject ObjectDiscription;
     [SerializeField] private Text object_Name_Text;
